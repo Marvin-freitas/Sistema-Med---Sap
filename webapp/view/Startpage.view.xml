@@ -1,0 +1,27 @@
+<mvc:View
+	controllerName="med.controller.Startpage"
+	xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt">
+    <App id="tutorialApp">
+        <pages>
+            <Page title="Login" enableScrolling="false">
+                <VBox 
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                    gap="2%">
+                    <core:Icon src="sap-icon://employee" size="2rem" color="#0aac6b" />
+                    <Input id="user" placeholder="Enter Email" width="300px" />
+                    <core:Icon src="sap-icon://locked" size="1.5rem" color="#0aac6b" />
+                    <Input id="pwd" type="Password" placeholder="Enter Password" width="300px" />
+                    <Button icon="sap-icon://log" id="btn" text="Login" type="Accept" press="onLoginPress" />
+					<Button text="Fazer Cadastro" type="Transparent" press="onRegisterPress" />
+				</VBox>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

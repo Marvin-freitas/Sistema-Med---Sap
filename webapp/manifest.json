@@ -1,0 +1,116 @@
+{
+	"_version": "1.21.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "med",
+		"type": "application",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{title}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"ach": "ach"
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_hcw",
+			"sap_horizon_dark"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": {
+			"viewName": "med.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.suite.ui.commons": {},
+				"sap.suite.ui.microchart": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "med.view",
+				"controlId": "tutorialApp",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": ["startpage"]
+				}
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "home",
+					"target": "startpage"
+				},
+				{
+					"pattern": "register",
+					"name": "register",
+					"target": "register"
+				},
+				{
+					"pattern": "main",
+					"name": "main",
+					"target": "main"
+				},
+				{
+					"pattern": "detalhe/{id}",
+					"name": "detalhe",
+					"target": "detalhe"
+				}
+			],
+			"targets": {
+				"startpage": {
+					"viewName": "Startpage",
+					"viewLevel": 0
+				},
+				"register": {
+					"viewName": "Register",
+					"viewLevel": 1
+				},
+				"main": {
+					"viewName": "Main",
+					"viewType": "XML",
+					"viewLevel": 1
+				},
+				"detalhe": {
+					"viewName": "Detalhe",
+					"viewType": "XML",
+					"viewLevel": 1
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+{
+  "name": "tutorial.icecream",
+  "version": "1.0.0",
+  "private": true,
+  "author": "SAP SE",
+  "scripts": {
+    "start": "ui5 serve",
+    "build": "ui5 build"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^3"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  }
+}

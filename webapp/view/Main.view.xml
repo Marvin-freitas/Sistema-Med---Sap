@@ -1,0 +1,105 @@
+<mvc:View
+    controllerName="med.controller.Main"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <Dialog
+        id="addPacienteDialog"
+        title="Cadastrar Novo Paciente"
+        class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+        draggable="true"
+        resizable="true"
+        contentWidth="400px"
+        contentHeight="auto"
+        stretchOnPhone="true"
+        afterClose=".onDialogClose">
+
+        <VBox class="sapUiSmallMargin">
+            <Label text="Nome" labelFor="inputNome" />
+            <Input id="inputNome" placeholder="Digite o nome" />
+
+            <Label text="Idade" labelFor="inputIdade" />
+            <Input id="inputIdade" type="Number" placeholder="Digite a idade" />
+
+
+            <Label text="Telefone" labelFor="inputTelefone" />
+            <Input id="inputTelefone" placeholder="Digite o telefone" />
+        </VBox>
+
+        <beginButton>
+            <Button text="Salvar" type="Emphasized" press=".onSalvarPaciente" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancelar" press=".onCancelarDialog" />
+        </endButton>
+    </Dialog>
+
+    <Page title="Pacientes" showNavButton="true" navButtonPress=".onNavBack">
+        <headerContent>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    icon="sap-icon://person-placeholder"
+                    press=".onAvatarPress"
+                    tooltip="Opções do Usuário" />
+            </OverflowToolbar>
+        </headerContent>
+
+        <content>
+            <VBox class="sapUiContentPadding sapUiResponsiveMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom">
+                    <Button
+                        text="Adicionar Paciente"
+                        icon="sap-icon://add"
+                        type="tranluced"
+                        press=".onAddPaciente" />
+                    <SearchField
+                        id="searchField"
+                        width="300px"
+                        search=".onSearch"
+                        placeholder="Buscar paciente por nome" />
+                </HBox>
+
+                <Table
+                    id="patientsTable"
+                    mode="None"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    items="{/}"
+                    class=" sapUiSizeCompact"
+                    busyIndicatorDelay="0"
+                    updateFinished=".onUpdateFinished">
+
+                    <columns>
+                        <Column width="30%">
+                            <Text text="Nome" />
+                          </Column>
+                          <Column width="20%">
+                            <Text text="Idade" />
+                          </Column>
+                          <Column width="30%">
+                            <Text text="Telefone" />
+                          </Column>
+                          <Column hAlign="Center" width="5rem">
+                            <Text text="Ações" />
+                          </Column>
+                          
+                    </columns>
+
+                    <items>
+                        <ColumnListItem type="Active" press=".onPressPaciente">
+                            <cells>
+                                <ObjectIdentifier title="{nome}" text="Paciente" />
+                                <Text text="{idade}" />
+                                <Text text="{telefone}" />
+                                <Button icon="sap-icon://delete" type="Reject" press=".onRemoverPaciente" tooltip="Remover paciente" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

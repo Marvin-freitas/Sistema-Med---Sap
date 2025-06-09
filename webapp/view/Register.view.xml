@@ -1,0 +1,27 @@
+<mvc:View
+    controllerName="med.controller.Register"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core">
+    <Page title="Cadastro" showNavButton="true" navButtonPress="onNavBack">
+        <VBox
+            alignItems="Center"
+            justifyContent="Center"
+            width="100%"
+            height="100%"
+            class="sapUiSmallMargin"
+            renderType="Bare">
+            
+            <core:Icon src="sap-icon://add-friend" size="2rem" color="#0a7fb5" />
+
+            <core:Icon src="sap-icon://employee" size="1.5rem" color="#0aac6b" />
+            <Input id="name" placeholder="Nome Completo" width="300px" />
+            <core:Icon src="sap-icon://email" size="1.5rem" color="#0aac6b" />
+            <Input id="email" placeholder="E-mail" type="Email" width="300px" />
+            <core:Icon src="sap-icon://locked" size="1.5rem" color="#0aac6b" />
+            <Input id="password" placeholder="Senha" type="Password" width="300px" />
+            
+            <Button text="Cadastrar" type="Emphasized" press="onRegisterSubmit" />
+        </VBox>
+    </Page>
+</mvc:View>

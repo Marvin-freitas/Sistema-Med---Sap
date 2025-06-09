@@ -1,0 +1,97 @@
+<mvc:View
+    controllerName="med.controller.Detalhe"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    
+    <Page title="Detalhes do Paciente" showNavButton="true" navButtonPress="onNavBack" class="detalhes-page">
+
+        <ObjectHeader
+            id="objectHeader"
+            title="{pacientes>nome}" 
+            number="{pacientes>idade}"
+            numberUnit="anos"
+            backgroundDesign="Translucent">
+        </ObjectHeader>
+
+        <IconTabBar
+            id="iconTabBar"
+            expanded="true"
+            class="sapUiNoContentPadding">
+
+            <items>
+                <IconTabFilter icon="sap-icon://hint" key="info">
+                    <VBox
+                        width="100%"
+                        style="background-color: #1e252f; padding: 1.5rem; border-radius: 16px; margin: 1rem 0;">
+                
+                        <form:SimpleForm layout="ResponsiveGridLayout">
+                            <form:content>
+                                <HBox width="100%" alignItems="Start" justifyContent="SpaceAround">
+                                    
+                                    
+                                    <VBox width="30%" >
+                                        <Label text="Nome"/>
+                                        <Text text="{pacientes>nome}"/>
+                                        <Label text="Idade"/>
+                                        <Text text="{pacientes>idade}"/>
+                                        <Label text="Telefone"/>
+                                        <Text text="{pacientes>telefone}"/>
+                                    </VBox>
+                
+                                    <!-- Formulário de Agendamento -->
+                                    <VBox width="50%">
+                                        <Title text="Agendar Consulta" level="H4" />
+                                        <Label text="Data" />
+                                        <DatePicker id="dataConsulta" width="100%" />
+                
+                                        <Label text="Hora" class="sapUiSmallMarginTop" />
+                                        <TimePicker id="horaConsulta" width="100%" />
+                
+                                        <Label text="Médico" class="sapUiSmallMarginTop" />
+                                        <Input id="medicoConsulta" width="100%" />
+                
+                                        <Label text="Descrição" class="sapUiSmallMarginTop" />
+                                        <TextArea id="descricaoConsulta" rows="4" growing="true" width="100%" />
+                
+                                        <Button text="Agendar" type="Emphasized" press=".onAgendarConsulta" class="sapUiSmallMarginTop" />
+                                    </VBox>
+                
+                                </HBox>
+                            </form:content>
+                        </form:SimpleForm>
+                    </VBox>
+                </IconTabFilter>
+
+                <IconTabFilter icon="sap-icon://inspection" key="stats">
+                    <HBox class="sapUiMediumMargin" renderType="Bare" alignItems="Stretch" justifyContent="Center">
+                        <VBox width="80%" class="historico-consultas">
+                            <Title text="Histórico de Consultas" level="H4" />
+                            <List
+                                id="consultasList"
+                                items="{consultasModel>/consultas}"
+                                inset="true"
+                                headerText="Consultas Recentes">
+                                <ObjectListItem
+                                    title="{consultasModel>descricao}"
+                                    intro="{
+                                        path: 'consultasModel>data',
+                                        formatter: '.formatDate'
+                                    }"
+                                    secondStatusText="Hora: {consultasModel>hora}"
+                                    icon="sap-icon://appointment-2"
+                                    number="{consultasModel>medico}"
+                                    numberUnit="Médico"
+                                    type="Active"
+                                    press="onConsultaPress">
+                                </ObjectListItem>
+                            </List>
+                        </VBox>
+                    </HBox>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+
+    </Page>
+</mvc:View>
